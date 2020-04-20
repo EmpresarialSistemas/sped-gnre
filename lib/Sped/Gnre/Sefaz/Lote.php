@@ -129,8 +129,12 @@ class Lote extends LoteGnre
 
             $c28 = $gnre->createElement('c28_tipoDocOrigem', $gnreGuia->c28_tipoDocOrigem);
             $c04 = $gnre->createElement('c04_docOrigem', $gnreGuia->c04_docOrigem);
-            $c06 = $gnre->createElement('c06_valorPrincipal', $gnreGuia->c06_valorPrincipal);
-            $c10 = $gnre->createElement('c10_valorTotal', $gnreGuia->c10_valorTotal);
+            if ($gnreGuia->c06_valorPrincipal) {
+                $c06 = $gnre->createElement('c06_valorPrincipal', $gnreGuia->c06_valorPrincipal);
+            }
+            if ($gnreGuia->c10_valorTotal) {
+                $c10 = $gnre->createElement('c10_valorTotal', $gnreGuia->c10_valorTotal);
+            }
             $c14 = $gnre->createElement('c14_dataVencimento', $gnreGuia->c14_dataVencimento);
             $c15 = $gnre->createElement('c15_convenio', $gnreGuia->c15_convenio);
             $c16 = $gnre->createElement('c16_razaoSocialEmitente', $gnreGuia->c16_razaoSocialEmitente);
@@ -140,8 +144,12 @@ class Lote extends LoteGnre
             $c18 = $gnre->createElement('c18_enderecoEmitente', $gnreGuia->c18_enderecoEmitente);
             $c19 = $gnre->createElement('c19_municipioEmitente', $gnreGuia->c19_municipioEmitente);
             $c20 = $gnre->createElement('c20_ufEnderecoEmitente', $gnreGuia->c20_ufEnderecoEmitente);
-            $c21 = $gnre->createElement('c21_cepEmitente', $gnreGuia->c21_cepEmitente);
-            $c22 = $gnre->createElement('c22_telefoneEmitente', $gnreGuia->c22_telefoneEmitente);
+            if ($gnreGuia->c21_cepEmitente) {
+                $c21 = $gnre->createElement('c21_cepEmitente', $gnreGuia->c21_cepEmitente);
+            }
+            if ($gnreGuia->c22_telefoneEmitente) {
+                $c22 = $gnre->createElement('c22_telefoneEmitente', $gnreGuia->c22_telefoneEmitente);
+            }
 
             $c34_tipoIdentificacaoDestinatario = $gnreGuia->c34_tipoIdentificacaoDestinatario;
             $c34 = $gnre->createElement('c34_tipoIdentificacaoDestinatario', $c34_tipoIdentificacaoDestinatario);
@@ -175,8 +183,12 @@ class Lote extends LoteGnre
             $dados->appendChild($c03);
             $dados->appendChild($c28);
             $dados->appendChild($c04);
-            $dados->appendChild($c06);
-            $dados->appendChild($c10);
+            if (isset($c06)) {
+                $dados->appendChild($c06);
+            }
+            if (isset($c10)) {
+                $dados->appendChild($c10);
+            }
             $dados->appendChild($c14);
             if ($gnreGuia->c15_convenio) {
                 $dados->appendChild($c15);
@@ -188,17 +200,27 @@ class Lote extends LoteGnre
             $dados->appendChild($c18);
             $dados->appendChild($c19);
             $dados->appendChild($c20);
-            $dados->appendChild($c21);
-            $dados->appendChild($c22);
-            $dados->appendChild($c34);
-            $dados->appendChild($c35);
+            if (isset($c21)) {
+                $dados->appendChild($c21);
+            }
+            if (isset($c22)) {
+                $dados->appendChild($c22);
+            }
+            if ($c34_tipoIdentificacaoDestinatario) {
+                $dados->appendChild($c34);
+            }
+            if ($c35_idContribuinteDestinatario) {
+                $dados->appendChild($c35);
+            }
             if ($gnreGuia->c36_inscricaoEstadualDestinatario) {
                 $dados->appendChild($c36);
             }
             if ($gnreGuia->c37_razaoSocialDestinatario) {
                 $dados->appendChild($c37);
             }
-            $dados->appendChild($c38);
+            if ($gnreGuia->c38_municipioDestinatario) {
+                $dados->appendChild($c38);
+            }
             $dados->appendChild($c33);
 
             $c05 = $guiaEstado->getNodeReferencia($gnre, $gnreGuia);
