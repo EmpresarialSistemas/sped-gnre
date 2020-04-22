@@ -104,12 +104,8 @@ class Consulta extends ConsultaGnre
         $soapEnv->appendChild($soapHeader);
         $gnre->appendChild($soapEnv);
 
-        $action = $this->ambienteDeTeste ?
-            'http://www.testegnre.pe.gov.br/webservice/GnreResultadoLote' :
-            'http://www.gnre.pe.gov.br/webservice/GnreResultadoLote';
-
         $gnreDadosMsg = $gnre->createElement('gnreDadosMsg');
-        $gnreDadosMsg->setAttribute('xmlns', $action);
+        $gnreDadosMsg->setAttribute('xmlns', 'http://www.gnre.pe.gov.br/webservice/GnreResultadoLote');
 
         $gnreDadosMsg->appendChild($consulta);
 
