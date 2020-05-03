@@ -228,7 +228,7 @@
                                 <td colspan="3" class="nobottom">Total a Recolher</td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="notop" align="right">R$ {$guia->c10_valorTotal|number_format:2:",":"."}</td>
+                                <td colspan="3" class="notop" align="right">R$ {$guia->c10_valorTotal|default:$guia->c06_valorPrincipal|number_format:2:",":"."}</td>
                             </tr>
                             <tr>
                                 <td class="noborder" colspan="3" style="text-align:right;">{$via}</td>
