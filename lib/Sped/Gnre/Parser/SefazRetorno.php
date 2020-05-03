@@ -174,7 +174,7 @@ class SefazRetorno extends Rules
     protected function getDataDeVencimento()
     {
         $content = $this->getContent($this->dadosArquivo[$this->index], 892, 8);
-        $this->lote['lote'][$this->index]->c14_dataVencimento = $content;
+        $this->lote['lote'][$this->index]->c14_dataVencimento = \DateTime::createFromFormat('dmY', $content);
     }
 
     protected function getDataLimitePagamento()
@@ -198,13 +198,13 @@ class SefazRetorno extends Rules
     protected function getParcela()
     {
         $content = $this->getContent($this->dadosArquivo[$this->index], 915, 3);
-        $this->lote['lote'][$this->index]->parcela = $content;
+        $this->lote['lote'][$this->index]->parcela = (int) $content;
     }
 
     protected function getValorPrincipal()
     {
         $content = $this->getContent($this->dadosArquivo[$this->index], 918, 15);
-        $this->lote['lote'][$this->index]->c06_valorPrincipal = $content;
+        $this->lote['lote'][$this->index]->c06_valorPrincipal = $this->getValorMonetario($content);
     }
 
     protected function getSequencialGuia()
@@ -228,19 +228,19 @@ class SefazRetorno extends Rules
     protected function getAtualizacaoMonetaria()
     {
         $content = $this->getContent($this->dadosArquivo[$this->index], 933, 15);
-        $this->lote['lote'][$this->index]->retornoAtualizacaoMonetaria = $content;
+        $this->lote['lote'][$this->index]->retornoAtualizacaoMonetaria = $this->getValorMonetario($content);
     }
 
     protected function getJuros()
     {
         $content = $this->getContent($this->dadosArquivo[$this->index], 948, 15);
-        $this->lote['lote'][$this->index]->retornoJuros = $content;
+        $this->lote['lote'][$this->index]->retornoJuros = $this->getValorMonetario($content);
     }
 
     protected function getMulta()
     {
         $content = $this->getContent($this->dadosArquivo[$this->index], 963, 15);
-        $this->lote['lote'][$this->index]->retornoMulta = $content;
+        $this->lote['lote'][$this->index]->retornoMulta = $this->getValorMonetario($content);
     }
 
     protected function getRepresentacaoNumerica()
@@ -339,5 +339,18 @@ class SefazRetorno extends Rules
     protected function aplicarParser()
     {
         return $this->lote;
+    }
+
+    protected function getValorMonetario($valor)
+    {
+        $valor = trim($valor);
+
+        if (empty($valor)) {
+            return 0;
+        }
+
+        $valor = (float) $valor;
+
+        return $valor / 100;
     }
 }

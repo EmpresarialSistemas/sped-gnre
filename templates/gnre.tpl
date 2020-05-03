@@ -159,7 +159,7 @@
                             </tr>
                             <tr>
                                 <td class="notop" colspan="2">
-                                    Documento válido para pagamento até {$guia->c14_dataVencimento}
+                                    Documento válido para pagamento até {$guia->c14_dataVencimento->format('d/m/Y')}
                                 </td>
                             </tr>
                         </table>
@@ -168,7 +168,7 @@
                         <table cellspacing="0" cellpadding="1" style="width:100%; margin-left: -1px;">
                             <tr>
                                 <td class="nobottom">UF Favorecida</td>
-                                <td style="width: 120px" colspan="2" class="nobottom">Código da Receita</td>
+                                <td style="width: 100px" colspan="2" class="nobottom">Código da Receita</td>
                             </tr>
                             <tr>
                                 <td class="notop" align="right">{$guia->c01_UfFavorecida}</td>
@@ -184,7 +184,7 @@
                                 <td colspan="3" class="nobottom">Data de Vencimento</td>
                             </tr>
                             <tr>
-                                <td colspan="3" align="right" class="notop">{$guia->c14_dataVencimento}</td>
+                                <td colspan="3" align="right" class="notop">{$guia->c14_dataVencimento->format('d/m/Y')}</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="nobottom">Nº do Documento de Origem</td>
@@ -197,38 +197,38 @@
                                 <td class="nobottom" align="left">Nº Parcela</td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="notop" align="right">{if $guia->mes}{$guia->mes}/{$guia->ano}{/if}</td>
-                                <td class="notop" align="right">{$guia->parcela}</td>
+                                <td colspan="2" class="notop" align="right">{if $guia->mes}{$guia->mes}/{$guia->ano}{else}-{/if}</td>
+                                <td class="notop" align="right">{if $guia->parcela > 0}{$guia->parcela}{/if}</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="nobottom">Valor Principal</td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="notop" align="right">R$ {$guia->c06_valorPrincipal}</td>
+                                <td colspan="3" class="notop" align="right">R$ {$guia->c06_valorPrincipal|number_format:2:",":"."}</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="nobottom">Atualização Monetária</td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="notop" align="right">R$ {$guia->retornoAtualizacaoMonetaria}</td>
+                                <td colspan="3" class="notop" align="right">R$ {$guia->retornoAtualizacaoMonetaria|number_format:2:",":"."}</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="nobottom">Juros</td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="notop" align="right">R$ {$guia->retornoJuros}</td>
+                                <td colspan="3" class="notop" align="right">R$ {$guia->retornoJuros|number_format:2:",":"."}</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="nobottom">Multa</td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="notop" align="right">R$ {$guia->retornoMulta}</td>
+                                <td colspan="3" class="notop" align="right">R$ {$guia->retornoMulta|number_format:2:",":"."}</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="nobottom">Total a Recolher</td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="notop" align="right">{$guia->c10_valorTotal}</td>
+                                <td colspan="3" class="notop" align="right">R$ {$guia->c10_valorTotal|number_format:2:",":"."}</td>
                             </tr>
                             <tr>
                                 <td class="noborder" colspan="3" style="text-align:right;">{$via}</td>
