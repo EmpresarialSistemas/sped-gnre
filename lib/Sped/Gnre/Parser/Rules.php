@@ -157,6 +157,8 @@ abstract class Rules
 
     abstract protected function aplicarParser();
 
+    abstract protected function getRazaoSocialEmitente();
+
     /**
      * @return \Sped\Gnre\Sefaz\Lote
      */
@@ -182,6 +184,7 @@ abstract class Rules
                 $this->getUfFavorecida();
                 $this->getCodigoReceita();
                 $this->getTipoEmitente();
+                $this->getRazaoSocialEmitente();
                 $this->getDocumentoEmitente();
                 $this->getEnderecoEmitente();
                 $this->getMunicipioEmitente();
