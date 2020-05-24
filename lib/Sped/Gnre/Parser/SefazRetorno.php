@@ -261,6 +261,11 @@ class SefazRetorno extends Rules
         $this->lote['lote'][$this->index]->retornoNumeroDeControle = $content;
     }
 
+    protected function getAmbienteGuia()
+    {
+        $this->lote['lote'][$this->index]->retornoAmbiente = $this->lote['header']['ambiente'];
+    }
+
     protected function getIdentificadorGuia()
     {
         $tratamento = array(

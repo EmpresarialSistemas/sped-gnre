@@ -68,9 +68,29 @@
             border-left: 0px;
         }
 
+        #watermark {
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            z-index: -1000;
+        }
+
+        #watermark > p {
+            font-size: 25px;
+            margin: 0;
+            color: #FF0000;
+            opacity: 0.6;
+        }
+
     </style>
     <body>
         {foreach $guiaViaInfo as $key => $via}
+            {if $guia->retornoAmbiente == 9}
+                <div id="watermark">
+                    <p>Documento gerado em ambiente de homologação.</p>
+                    <p>Não é valido para pagamento.</p>
+                </div>
+            {/if}
             <table cellspacing="0" cellpadding="1" style="width:100%;">
                 <tr>
                     <td style="width: 65%;" valign="top" class="noborder">

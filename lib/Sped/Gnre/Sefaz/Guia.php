@@ -368,6 +368,11 @@ class Guia
     private $retornoNumeroDeControle;
 
     /**
+     * @var int 0 - Produção / 9 - Outro (inválido para pagamento)
+     */
+    private $retornoAmbiente;
+
+    /**
      * Método mágico utilizado para retornar um valor de um
      * determinado atributo na classe
      * @param  string  $property  Uma propriedade válida dessa classe

@@ -159,6 +159,8 @@ abstract class Rules
 
     abstract protected function getRazaoSocialEmitente();
 
+    abstract protected function getAmbienteGuia();
+
     /**
      * @return \Sped\Gnre\Sefaz\Lote
      */
@@ -210,6 +212,7 @@ abstract class Rules
                 $this->getCodigoBarras();
                 $this->getNumeroDeControle();
                 $this->getIdentificadorGuia();
+                $this->getAmbienteGuia();
 
                 $lote->addGuia($this->lote['lote'][$i]);
             } elseif ($this->identificador == self::GUIA_EMITIDA_COM_SUCESSO) {
